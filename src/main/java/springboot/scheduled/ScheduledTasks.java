@@ -1,4 +1,4 @@
-package springboot.web;
+package springboot.scheduled;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;

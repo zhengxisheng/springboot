@@ -22,11 +22,4 @@ public class HelloController {
 	public String exception() throws Exception{
 	  throw new Exception("error");
 	}
-	
-	
-	@RequestMapping("/runtimeException")
-	public String runtimeException() throws RuntimeException{
-		throw new RuntimeException("运行时异常..");
-	}
-
 }
