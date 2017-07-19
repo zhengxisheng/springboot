@@ -7,7 +7,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.cache.RedisCacheManager;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -16,6 +15,12 @@ import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+
+/**
+ * Redis缓存配置类
+ * @author szekinwin
+ *
+ */
 @Configuration
 @EnableCaching
 public class RedisConfig extends CachingConfigurerSupport{
@@ -27,6 +32,7 @@ public class RedisConfig extends CachingConfigurerSupport{
 	@Value("${spring.redis.timeout}")
 	private int timeout;
 	
+	//自定义缓存key生成策略
 //	@Bean
 //	public KeyGenerator keyGenerator() {
 //		return new KeyGenerator(){
@@ -42,24 +48,26 @@ public class RedisConfig extends CachingConfigurerSupport{
 //			}
 //		};
 //	}
-	@Bean
+	//缓存管理器
+	@Bean 
 	public CacheManager cacheManager(@SuppressWarnings("rawtypes") RedisTemplate redisTemplate) {
 		RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
-        cacheManager.setDefaultExpiration(10);  //设置 key-value 超时时间
+		//设置缓存过期时间  (如果这里设置全局缓存时间,则使用注解@CacheEvict(key ="#p0",allEntries=true)不生效)
+       // cacheManager.setDefaultExpiration(10000);
         return cacheManager;
 	}
-	@Bean
-    public JedisConnectionFactory redisConnectionFactory(){
-        JedisConnectionFactory factory = new JedisConnectionFactory();
-        factory.setHostName(host);
-        factory.setPort(port);
-        factory.setTimeout(timeout);    //设置连接超时
-        return factory;
-    }
+//	@Bean
+//    public JedisConnectionFactory redisConnectionFactory(){
+//        JedisConnectionFactory factory = new JedisConnectionFactory();
+//        factory.setHostName(host);
+//        factory.setPort(port);
+//        factory.setTimeout(timeout);
+//        return factory;
+//    }
 	@Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory){
         StringRedisTemplate template = new StringRedisTemplate(factory);
-        setSerializer(template);    //设置序列化工具，就不必实现Serializable接口
+        setSerializer(template);//设置序列化工具
         template.afterPropertiesSet();
         return template;
     }

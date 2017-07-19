@@ -21,4 +21,12 @@ public class UserService {
 	public int addUser(String name,String age){
 		return userMapper.addUser(name,age);
 	}
+	
+	public void updataById(String id,String name){
+		 userMapper.updataById(id,name);
+	}
+	
+	public void deleteById(int id){
+		userMapper.deleteById(id);
+	}
 }

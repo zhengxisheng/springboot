@@ -34,4 +34,24 @@ public class HelloController {
 	public User findUser(@RequestParam("id") String id){
 		return userService.findById(id);
 	}
+	@RequestMapping("/updataById")
+	public String updataById(@RequestParam("id") String id,@RequestParam("name") String name){
+		try {
+			userService.updataById(id, name);
+		} catch (Exception e) {
+			return "error";
+		}
+		return "success";
+	}
+	
+	@RequestMapping("/deleteById")
+	public String deleteById(@RequestParam("id") int id){
+		try {
+			userService.deleteById(id);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return "error";
+		}
+		return "success";
+	}
 }
