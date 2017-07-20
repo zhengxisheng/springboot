@@ -26,7 +26,7 @@ public class UserService {
 		 userMapper.updataById(id,name);
 	}
 	
-	public void deleteById(int id){
+	public void deleteById(String id){
 		userMapper.deleteById(id);
 	}
 }

@@ -21,7 +21,7 @@ public interface UserMapper {
 	int addUser(@Param("name")String name,@Param("age")String age);
 	
 	@Select("select * from user where id =#{id}")
-	@Cacheable(key ="#p0")
+	@Cacheable(key ="#p0") 
 	User findById(@Param("id") String id);
 	
 	@CachePut(key = "#p0")
@@ -31,6 +31,6 @@ public interface UserMapper {
 	//如果指定为 true，则方法调用后将立即清空所有缓存
 	@CacheEvict(key ="#p0",allEntries=true)
 	@Delete("delete from user where id=#{id}")
-	void deleteById(@Param("id")int id);
+	void deleteById(@Param("id")String id);
 	
 }

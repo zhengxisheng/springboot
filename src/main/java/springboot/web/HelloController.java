@@ -45,11 +45,10 @@ public class HelloController {
 	}
 	
 	@RequestMapping("/deleteById")
-	public String deleteById(@RequestParam("id") int id){
+	public String deleteById(@RequestParam("id") String id){
 		try {
 			userService.deleteById(id);
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
 			return "error";
 		}
 		return "success";
