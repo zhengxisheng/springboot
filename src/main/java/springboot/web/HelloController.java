@@ -21,6 +21,10 @@ public class HelloController {
 	public String exception() throws Exception{
 	  throw new Exception("error");
 	}
+	@RequestMapping("/hello")
+	public String hello(){
+	  return "hello tomcat";
+	}
 	@RequestMapping("/redisHandler")
 	public String redisHandler(){
 		stringRedisTemplate.opsForValue().set("k5", "Springboot redis");
