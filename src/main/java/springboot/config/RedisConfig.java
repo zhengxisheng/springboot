@@ -53,17 +53,9 @@ public class RedisConfig extends CachingConfigurerSupport{
 	public CacheManager cacheManager(@SuppressWarnings("rawtypes") RedisTemplate redisTemplate) {
 		RedisCacheManager cacheManager = new RedisCacheManager(redisTemplate);
 		//设置缓存过期时间  (如果这里设置全局缓存时间,则使用注解@CacheEvict(key ="#p0",allEntries=true)不生效)
-       // cacheManager.setDefaultExpiration(10000);
+        //cacheManager.setDefaultExpiration(10000);
         return cacheManager;
 	}
-//	@Bean
-//    public JedisConnectionFactory redisConnectionFactory(){
-//        JedisConnectionFactory factory = new JedisConnectionFactory();
-//        factory.setHostName(host);
-//        factory.setPort(port);
-//        factory.setTimeout(timeout);
-//        return factory;
-//    }
 	@Bean
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory factory){
         StringRedisTemplate template = new StringRedisTemplate(factory);
