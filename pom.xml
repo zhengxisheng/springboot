@@ -97,6 +97,11 @@
             <artifactId>zkclient</artifactId>
             <version>0.1</version>
         </dependency>
+        <dependency>
+            <groupId>dubboService</groupId>
+            <artifactId>dubboService</artifactId>
+            <version>1.0</version>
+        </dependency>
 	</dependencies>
 
 	<build>

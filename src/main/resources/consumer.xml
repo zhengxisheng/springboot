@@ -4,10 +4,11 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://code.alibabatech.com/schema/dubbo
-    http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
+    http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+    <!-- 应用名称 -->
     <dubbo:application name="consumer" />
     <!-- zookeeper作为注册中心 -->
     <dubbo:registry  protocol="zookeeper" address="zookeeper://172.31.19.224:2181" />
-    <!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
+    <!-- 生成远程服务代理 -->
     <dubbo:reference interface="springboot.dao.DubboService" id="dubboService"></dubbo:reference>
 </beans>

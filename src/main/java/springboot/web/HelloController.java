@@ -10,6 +10,7 @@ import springboot.dao.DubboService;
 import springboot.domain.User;
 import springboot.service.UserService;
 
+
 @RestController
 public class HelloController {
 	
@@ -19,6 +20,7 @@ public class HelloController {
 	private UserService userService;
 	@Autowired
 	private DubboService dubboService;
+
 	
 	@RequestMapping("/exception")
 	public String exception() throws Exception{
@@ -26,7 +28,7 @@ public class HelloController {
 	}
 	@RequestMapping("/hello")
 	public String hello(){
-	  return dubboService.sayHello();
+		return dubboService.sayHello();
 	}
 	@RequestMapping("/redisHandler")
 	public String redisHandler(){
