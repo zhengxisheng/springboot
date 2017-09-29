@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import springboot.dao.DubboService;
+//import springboot.dao.DubboService;
 import springboot.domain.User;
 import springboot.service.UserService;
 
@@ -18,18 +18,18 @@ public class HelloController {
 	private StringRedisTemplate stringRedisTemplate;
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private DubboService dubboService;
+//	@Autowired
+//	private DubboService dubboService;
 
 	
 	@RequestMapping("/exception")
 	public String exception() throws Exception{
 	  throw new Exception("error");
 	}
-	@RequestMapping("/hello")
-	public String hello(){
-		return dubboService.sayHello();
-	}
+//	@RequestMapping("/hello")
+//	public String hello(){
+//		return dubboService.sayHello();
+//	}
 	@RequestMapping("/redisHandler")
 	public String redisHandler(){
 		stringRedisTemplate.opsForValue().set("k5", "Springboot redis");
