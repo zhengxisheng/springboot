@@ -5,7 +5,6 @@ public class ErrorInfo <T>{
 	public static final Integer OK =0;
 	public static final Integer ERROR=100;
 	
-	private String age;//
 	private Integer code; //消息类型
 	private String message;//消息内容
 	private String url;//请求的url
