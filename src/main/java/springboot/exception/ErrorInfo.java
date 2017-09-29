@@ -2,8 +2,8 @@ package springboot.exception;
 
 public class ErrorInfo <T>{
 
-	public static final Integer OK =0;
-	public static final Integer ERROR=100;
+	public static final Integer OK =0; //成功标识
+	public static final Integer ERROR=100; //错误标识
 	
 	private Integer code; //消息类型
 	private String message;//消息内容
