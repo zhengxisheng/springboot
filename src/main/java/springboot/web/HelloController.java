@@ -18,8 +18,8 @@ public class HelloController {
 	private StringRedisTemplate stringRedisTemplate;
 	@Autowired
 	private UserService userService;
-//	@Autowired
-//	private DubboService dubboService;
+	@Autowired
+	private DubboService dubboService;
 
 	
 	@RequestMapping("/exception")
